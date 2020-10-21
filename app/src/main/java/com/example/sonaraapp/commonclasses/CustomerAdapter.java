@@ -1,13 +1,19 @@
 package com.example.sonaraapp.commonclasses;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sonaraapp.R;
@@ -34,16 +40,30 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
 
     @Override
     public void onBindViewHolder(@NonNull CustomerViewHolder holder, int position) {
-        Customer customer = customerList.get(position);
+        final Customer customer = customerList.get(position);
         holder.name.setText(customer.getName());
         holder.mobno.setText(customer.getMobile());
-        holder.customer_call.setText(customer.getCallnumber());
+//        holder.customer_call.setText(customer.getCallnumber());
         holder.serialno.setText(customer.getSerialno());
         holder.problems.setText(customer.getProblem());
         holder.workdone.setText(customer.getWorkdone());
         holder.estimate.setText(customer.getEstimate());
         holder.paid.setText(customer.getPaid());
         holder.remarks.setText(customer.getRemarks());
+        holder.customer_call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String number = customer.getCallnumber();
+                Toast.makeText(mCtx, "hi"+number, Toast.LENGTH_SHORT).show();
+                if (ActivityCompat.checkSelfPermission(mCtx,Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+                    Intent callIntent = new Intent(Intent.ACTION_CALL);
+                    callIntent.setData(Uri.parse("tel:"+customer.getCallnumber()));
+                    mCtx.startActivity(callIntent);
+                }else{
+                    Toast.makeText(mCtx, "You don't assign permission.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     @Override

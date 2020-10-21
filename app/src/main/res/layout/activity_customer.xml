@@ -42,7 +42,8 @@
                         android:text="Mobile No."
                         android:id="@+id/mobno"
                         android:textColor="#000000"
-                        android:textSize="16dp" />
+                        android:textSize="16dp"
+                        />
 
                 </LinearLayout>
 
@@ -55,9 +56,7 @@
                         android:id="@+id/customer_call"
                         android:backgroundTint="@color/cardview_dark_background"
                         android:layout_height="40dp"
-
                         android:layout_alignParentRight="true"
-
                         android:background="@drawable/ic_baseline_call_24"/>
                 </RelativeLayout>
             </LinearLayout>
