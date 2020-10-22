@@ -10,4 +10,7 @@ public class URL {
     public static final String URL_LOGIN = ROOT_URL + "/login";
 
     public static final String URL_ADDCUSTOMER = ROOT_URL + "/customer/customerdetails";
+
+    public  static final String URL_SHOWALLCUSTOMER = ROOT_URL + "/customer/getalldetails";
+
 }

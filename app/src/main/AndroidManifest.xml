@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,21 +14,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".EmployeeProfile"></activity>
-        <activity android:name=".customerlist" >
+        <activity android:name=".AddEnginner"></activity>
+        <activity android:name=".EmployeeProfile" />
+        <activity android:name=".customerlist"></activity>
+        <activity android:name=".addcustomer"></activity>
+        <activity android:name=".signup" />
+        <activity android:name=".login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".addcustomer">
-        </activity>
-        <activity android:name=".signup" />
-        <activity android:name=".login" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".AdminProfile" />
     </application>
 
 </manifest>

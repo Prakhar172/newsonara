@@ -22,14 +22,15 @@ import com.example.sonaraapp.commonclasses.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-public class signup extends AppCompatActivity {
+public class AddEnginner extends AppCompatActivity {
 
     EditText et_signup_username,et_signup_mobile,et_signup_email,et_signup_pass,et_signup_re_pass;
     Button btn_signup;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_add_enginner);
         et_signup_username = findViewById(R.id.et_signup_username);
         et_signup_mobile = findViewById(R.id.et_signup_mobile);
         et_signup_email = findViewById(R.id.et_signup_email);
@@ -61,28 +62,26 @@ public class signup extends AppCompatActivity {
                     et_signup_re_pass.setError("Password and Repassword Mismatch");
                 }
                 else {
-                    registerUser(et_signup_username.getText().toString(), et_signup_mobile.getText().toString(), et_signup_email.getText().toString(), et_signup_pass.getText().toString());
+                    AddNewEnginner(et_signup_username.getText().toString(), et_signup_mobile.getText().toString(), et_signup_email.getText().toString(), et_signup_pass.getText().toString());
                 }
             }
         });
 
     }
-    private void registerUser(final String username, final String mobile, final String email, final String pass) {
+    private void AddNewEnginner(final String username, final String mobile, final String email, final String pass) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL.URL_REGISTER, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 String name = response;
                 if(Integer.parseInt(response)>0){
-                    SharedData sd = new SharedData(signup.this);
-                    sd.SaveSharedPrefernce(mobile,pass,response);
-                    Intent in = new Intent(signup.this,EmployeeProfile.class);
+                    Intent in = new Intent(AddEnginner.this,AdminProfile.class);
                     startActivity(in);
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(signup.this, "error  "+error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddEnginner.this, "error  "+error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -97,8 +96,7 @@ public class signup extends AppCompatActivity {
                 return params; // {email: 'shivnag@gmail.com',pass:'124'}
             }
         };
-        RequestQueue requestQueue = Volley.newRequestQueue(signup.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(AddEnginner.this);
         requestQueue.add(stringRequest);
-//        VolleySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
     }
 }

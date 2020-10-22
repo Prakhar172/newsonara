@@ -5,6 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.telecom.TelecomManager;
+import android.telephony.PhoneStateListener;
+import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,10 +57,14 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
             @Override
             public void onClick(View view) {
                 String number = customer.getCallnumber();
-                Toast.makeText(mCtx, "hi"+number, Toast.LENGTH_SHORT).show();
+                PhoneCallListener phoneListener = new PhoneCallListener(mCtx);
+                TelephonyManager telephonyManager =     (TelephonyManager) mCtx.getSystemService(Context.TELEPHONY_SERVICE);
+                telephonyManager.listen(phoneListener, PhoneStateListener.LISTEN_CALL_STATE);
+
                 if (ActivityCompat.checkSelfPermission(mCtx,Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
                     Intent callIntent = new Intent(Intent.ACTION_CALL);
                     callIntent.setData(Uri.parse("tel:"+customer.getCallnumber()));
+//                    callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     mCtx.startActivity(callIntent);
                 }else{
                     Toast.makeText(mCtx, "You don't assign permission.", Toast.LENGTH_SHORT).show();
@@ -72,10 +79,7 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
     }
 
     class CustomerViewHolder extends RecyclerView.ViewHolder {
-
         TextView name,mobno,customer_call,serialno,problems,workdone,estimate,paid,remarks;
-
-
         public CustomerViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);

@@ -35,7 +35,10 @@ Button btn_login;
         et_pass = findViewById(R.id.et_pass);
         signup = findViewById(R.id.btn_lgn_signup);
         SharedData sharedData = new SharedData(login.this);
-        if(sharedData.GetSharedPrefernce()){
+        if(sharedData.GetName().equalsIgnoreCase("Admin")){
+            Intent in = new Intent(login.this,AdminProfile.class);
+            startActivity(in);
+        }else{
             Intent in = new Intent(login.this,EmployeeProfile.class);
             startActivity(in);
         }
@@ -66,11 +69,17 @@ Button btn_login;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL.URL_LOGIN, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if(Integer.parseInt(response)>0){
+                String[] name = response.split("-");
+                if(Integer.parseInt(name[0])>0) {
                     SharedData sd = new SharedData(login.this);
-                    sd.SaveSharedPrefernce(mobile,pass);
-                    Intent in = new Intent(login.this,EmployeeProfile.class);
-                    startActivity(in);
+                    sd.SaveSharedPrefernce(mobile, pass, name[1]);
+                    if (name[1].equalsIgnoreCase("Admin")) {
+                        Intent in = new Intent(login.this, AdminProfile.class);
+                        startActivity(in);
+                    } else {
+                        Intent in = new Intent(login.this, EmployeeProfile.class);
+                        startActivity(in);
+                    }
                 }
             }
         }, new Response.ErrorListener() {

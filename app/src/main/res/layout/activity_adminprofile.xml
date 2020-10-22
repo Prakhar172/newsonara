@@ -5,29 +5,96 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".choosebutton">
-    <Button
+    android:background="@color/background">
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Engineering"
-        android:layout_marginTop="150dp"
-        android:id="@+id/add_engineering"
-        />
-    <Button
+        android:layout_centerHorizontal="true"
+        android:text="Dashboard"
+        android:paddingTop="50dp"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:fontFamily="sans-serif"
+        android:textSize="50dp"
+        android:textStyle="bold|italic" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:text="Add Customer"
-        android:id="@+id/btn_add_customer"
-
-        />
-
-    <Button
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/btn_add_customer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/border"
+            android:textColor="#000000"
+            android:padding="15dp"
+            android:text="Add New Customer"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:text="Customer Panel"
-        android:id="@+id/btn_customer_panel"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/btn_add_enginner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/border"
+            android:textColor="#000000"
+            android:padding="15dp"
+            android:text="Add New Enginner"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/btn_show_customer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/border"
+            android:textColor="#000000"
+            android:padding="15dp"
+            android:text="Show All Customer"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/border"
+            android:textColor="#000000"
+            android:padding="15dp"
+            android:text="Logout"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
-        />
+
 </LinearLayout>

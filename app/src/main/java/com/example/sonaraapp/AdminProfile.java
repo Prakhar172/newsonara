@@ -7,21 +7,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.sonaraapp.commonclasses.SharedData;
+
 public class AdminProfile extends AppCompatActivity {
-Button addengineering, addcustomer,customerpanel;
+Button addengineer, addcustomer,showcustomer,logout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adminprofile);
         addcustomer = findViewById(R.id.btn_add_customer);
-        addengineering = findViewById(R.id.add_engineering);
-        customerpanel = findViewById(R.id.btn_customer_panel);
-        addengineering.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        addengineer = findViewById(R.id.btn_add_enginner);
+        showcustomer = findViewById(R.id.btn_show_customer);
+        logout = findViewById(R.id.btn_logout);
 
-            }
-        });
+
     addcustomer.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -29,12 +28,26 @@ Button addengineering, addcustomer,customerpanel;
             startActivity(in);
         }
     });
-    customerpanel.setOnClickListener(new View.OnClickListener() {
+    addengineer.setOnClickListener(new View.OnClickListener() {
         @Override
-        public void onClick(View v) {
+        public void onClick(View view) {
+            Intent in = new Intent(AdminProfile.this,AddEnginner.class);
+            startActivity(in);
+        }
+    });
+    showcustomer.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
             Intent in = new Intent(AdminProfile.this,customerlist.class);
             startActivity(in);
-
+        }
+    });
+    logout.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            SharedData sd = new SharedData(AdminProfile.this);
+            sd.clearSharedPreferences();
+            startActivity(new Intent(AdminProfile.this,login.class));
         }
     });
     }

@@ -22,63 +22,59 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="95dp"
-            android:layout_marginTop="84dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginBottom="8dp"
-            android:src="@drawable/addcustomer"/>
-    <Button
-        android:id="@+id/btn_add_customer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/button_style"
-        android:text="Add Customer"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/check_password_box" />
-    </LinearLayout>
         <Button
-        android:id="@+id/btn_show_customer"
+            android:id="@+id/btn_add_customer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/border"
+            android:textColor="#000000"
+            android:padding="15dp"
+            android:text="Add New Customer"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/button_style"
-        android:text="Show all customer"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/check_password_box" />
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/btn_show_customer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/border"
+            android:textColor="#000000"
+            android:padding="15dp"
+            android:text="Show All Customer"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/border"
+            android:textColor="#000000"
+            android:padding="15dp"
+            android:text="Logout"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_logout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/button_style"
-        android:text="Logout"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/check_password_box" />
 
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.example.sonaraapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class addcustomer extends AppCompatActivity {
-    EditText et_name_of_customer, et_mobile, et_model_no, et_serial_no, et_problems, et_workdone, et_estimate, et_apid, et_remark;
+    EditText et_name_of_customer, et_mobile, et_model_no, et_serial_no, et_problems,  et_estimate, et_paid;
     Button btn_signup;
 
     @Override
@@ -33,22 +34,26 @@ public class addcustomer extends AppCompatActivity {
         et_serial_no = findViewById(R.id.et_serial_no);
         et_problems = findViewById(R.id.et_problems);
         et_estimate = findViewById(R.id.et_estimate);
-        et_apid = findViewById(R.id.et_apid);
+        et_paid = findViewById(R.id.et_apid);
         btn_signup = findViewById(R.id.btn_signup);
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AddUser(et_name_of_customer.getText().toString(), et_mobile.getText().toString(), et_model_no.getText().toString(), et_serial_no.getText().toString(), et_problems.getText().toString(), et_workdone.getText().toString(), et_estimate.getText().toString(), et_apid.getText().toString(), et_remark.getText().toString());
+//                Toast.makeText(addcustomer.this, "" + "" + et_paid.getText().toString() , Toast.LENGTH_SHORT).show();
+                AddUser(et_name_of_customer.getText().toString(), et_mobile.getText().toString(), et_model_no.getText().toString(), et_serial_no.getText().toString(), et_problems.getText().toString(), et_estimate.getText().toString(), et_paid.getText().toString());
             }
         });
 
     }
 
-    private void AddUser(final String username, final String mobile, final String modelno, final String serialno, final String problems, final String workdone, final String estimate, final String paid, final String remarks) {
+    private void AddUser(final String username, final String mobile, final String modelno, final String serialno, final String problems, final String estimate, final String paid) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL.URL_ADDCUSTOMER, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(getApplicationContext(), "" + response, Toast.LENGTH_SHORT).show();
+                if(Integer.parseInt(response)>0){
+                    Intent in = new Intent(addcustomer.this,AdminProfile.class);
+                    startActivity(in);
+                }
             }
         }, new Response.ErrorListener() {
             @Override
@@ -65,10 +70,8 @@ public class addcustomer extends AppCompatActivity {
                 params.put("modelno", modelno);
                 params.put("serialno", serialno);
                 params.put("problem", problems);
-                params.put("workdone", workdone);
                 params.put("estimate", estimate);
                 params.put("paid", paid);
-                params.put("remarks", remarks);
                 return params; // {email: 'shivnag@gmail.com',pass:'124'}
             }
         };

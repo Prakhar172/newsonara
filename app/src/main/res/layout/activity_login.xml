@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_height="match_parent"
+    android:layout_width="match_parent"
     android:orientation="vertical"
+    android:background="@color/background">
+<LinearLayout     android:orientation="vertical"
     android:background="#C0C0C0"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -115,7 +120,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:background="@drawable/border"
-        android:hint="  Passowrd"
+        android:hint="  Password"
 
         android:inputType="textPassword"
         android:padding="15dp"
@@ -140,3 +145,4 @@
         android:textStyle="bold" />
 
 </LinearLayout>
+</ScrollView>
