@@ -6,11 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.sonaraapp.commonclasses.SharedData;
 
 public class AdminProfile extends AppCompatActivity {
 Button addengineer, addcustomer,showcustomer,logout;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +22,11 @@ Button addengineer, addcustomer,showcustomer,logout;
         addengineer = findViewById(R.id.btn_add_enginner);
         showcustomer = findViewById(R.id.btn_show_customer);
         logout = findViewById(R.id.btn_logout);
+        SharedData sharedData = new SharedData(AdminProfile.this);
+        if(!sharedData.GetSharedPrefernce()){
+            Intent in = new Intent(AdminProfile.this,login.class);
+            startActivity(in);
+        }
 
 
     addcustomer.setOnClickListener(new View.OnClickListener() {
@@ -50,5 +58,14 @@ Button addengineer, addcustomer,showcustomer,logout;
             startActivity(new Intent(AdminProfile.this,login.class));
         }
     });
+
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Toast.makeText(AdminProfile.this,"There is no back action",Toast.LENGTH_LONG).show();
+        return;
+    }
+
+
 }

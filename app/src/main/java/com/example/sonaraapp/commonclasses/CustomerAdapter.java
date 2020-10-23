@@ -57,7 +57,7 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
             @Override
             public void onClick(View view) {
                 String number = customer.getCallnumber();
-                PhoneCallListener phoneListener = new PhoneCallListener(mCtx);
+                PhoneCallListener phoneListener = new PhoneCallListener(mCtx,customer.getMobile());
                 TelephonyManager telephonyManager =     (TelephonyManager) mCtx.getSystemService(Context.TELEPHONY_SERVICE);
                 telephonyManager.listen(phoneListener, PhoneStateListener.LISTEN_CALL_STATE);
 

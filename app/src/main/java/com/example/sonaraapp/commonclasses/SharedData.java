@@ -47,6 +47,11 @@ public class SharedData {
         String name = sp.getString(KEY_NAME,null);
         return name;
     }
+    public String GetMobile(){
+        SharedPreferences sp = mctx.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
+        String mobile = sp.getString(KEY_MOBILE,null);
+        return mobile;
+    }
 
     public boolean clearSharedPreferences() {
         SharedPreferences sp = mctx.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);

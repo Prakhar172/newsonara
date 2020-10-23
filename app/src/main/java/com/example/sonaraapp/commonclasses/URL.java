@@ -13,4 +13,8 @@ public class URL {
 
     public  static final String URL_SHOWALLCUSTOMER = ROOT_URL + "/customer/getalldetails";
 
+    public static final String URL_REMARKS = ROOT_URL+"/customer/remarks/";
+
+    public static final String URL_SHOWALLEMPLOYEES = ROOT_URL+"/employee/details";
+
 }

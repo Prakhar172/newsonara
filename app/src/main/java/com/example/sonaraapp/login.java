@@ -34,36 +34,47 @@ Button btn_login;
         et_mobile = findViewById(R.id.et_mobile);
         et_pass = findViewById(R.id.et_pass);
         signup = findViewById(R.id.btn_lgn_signup);
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(login.this,signup.class);
+                startActivity(in);
+            }
+        });
+        Toast.makeText(this, "--------><----------", Toast.LENGTH_SHORT).show();
         SharedData sharedData = new SharedData(login.this);
-        if(sharedData.GetName().equalsIgnoreCase("Admin")){
+        if(!sharedData.GetSharedPrefernce()){
+            signup.setOnClickListener((new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent in = new Intent(login.this,signup.class);
+                    startActivity(in);
+                }
+            }));
+
+            login.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (et_mobile.getText().toString().isEmpty()) {
+                        et_mobile.setError("Mobile Number can't be blank");
+                    } else if (et_mobile.getText().toString().length() != 10) {
+                        et_mobile.setError("Mobile Number is not Valid");
+                    } else if (et_pass.getText().toString().isEmpty()) {
+                        et_pass.setError("Password can't be blank");
+                    } else {
+                        LoginUser(et_mobile.getText().toString(), et_pass.getText().toString());
+                    }
+                }
+            });
+        }
+        else if(sharedData.GetName().equalsIgnoreCase("Admin")){
             Intent in = new Intent(login.this,AdminProfile.class);
             startActivity(in);
         }else{
             Intent in = new Intent(login.this,EmployeeProfile.class);
             startActivity(in);
         }
-        signup.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in = new Intent(login.this,signup.class);
-                startActivity(in);
-            }
-        }));
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (et_mobile.getText().toString().isEmpty()) {
-                    et_mobile.setError("Mobile Number can't be blank");
-                } else if (et_mobile.getText().toString().length() != 10) {
-                    et_mobile.setError("Mobile Number is not Valid");
-                } else if (et_pass.getText().toString().isEmpty()) {
-                    et_pass.setError("Password can't be blank");
-                } else {
-                    LoginUser(et_mobile.getText().toString(), et_pass.getText().toString());
-                }
-            }
-        });
     }
     private void LoginUser(final String mobile, final String pass) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL.URL_LOGIN, new Response.Listener<String>() {

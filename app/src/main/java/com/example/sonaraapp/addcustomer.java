@@ -15,6 +15,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.sonaraapp.commonclasses.SharedData;
 import com.example.sonaraapp.commonclasses.URL;
 
 import java.util.HashMap;
@@ -39,20 +40,45 @@ public class addcustomer extends AppCompatActivity {
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Toast.makeText(addcustomer.this, "" + "" + et_paid.getText().toString() , Toast.LENGTH_SHORT).show();
-                AddUser(et_name_of_customer.getText().toString(), et_mobile.getText().toString(), et_model_no.getText().toString(), et_serial_no.getText().toString(), et_problems.getText().toString(), et_estimate.getText().toString(), et_paid.getText().toString());
+                if (et_name_of_customer.getText().toString().isEmpty()) {
+                    et_name_of_customer.setError("Username can't be blank");
+                } else if (et_mobile.getText().toString().isEmpty()) {
+                    et_mobile.setError("Mobile Number can't be blank");
+                } else if (et_model_no.getText().toString().isEmpty()) {
+                    et_model_no.setError("Model Number can't be blank");
+                } else if (et_serial_no.getText().toString().isEmpty()) {
+                    et_serial_no.setError("Serial Number Can't be blank");
+                } else if (et_problems.getText().toString().isEmpty()) {
+                    et_problems.setError("Problem can't be blank");
+                } else if (et_estimate.getText().toString().isEmpty()) {
+                    et_estimate.setError("Estimate Value can't be blank");
+                } else if (et_paid.getText().toString().isEmpty()) {
+                    et_paid.setError("Paid Value can't be blank");
+                } else {
+                    SharedData sharedData = new SharedData(addcustomer.this);
+                    Toast.makeText(addcustomer.this, "so"+sharedData.GetMobile(), Toast.LENGTH_SHORT).show();
+                    AddUser(et_name_of_customer.getText().toString(), et_mobile.getText().toString(), et_model_no.getText().toString(), et_serial_no.getText().toString(), et_problems.getText().toString(), et_estimate.getText().toString(), et_paid.getText().toString(),sharedData.GetMobile());
+                }
             }
         });
 
     }
 
-    private void AddUser(final String username, final String mobile, final String modelno, final String serialno, final String problems, final String estimate, final String paid) {
+    private void AddUser(final String username, final String mobile, final String modelno, final String serialno, final String problems, final String estimate, final String paid,final String enginner_id) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL.URL_ADDCUSTOMER, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+//                Toast.makeText(addcustomer.this, ""+response, Toast.LENGTH_SHORT).show();
                 if(Integer.parseInt(response)>0){
-                    Intent in = new Intent(addcustomer.this,AdminProfile.class);
-                    startActivity(in);
+                    String adminnumber = "0987654321";
+                    if(!response.equalsIgnoreCase(adminnumber))
+                    {
+                        Intent in = new Intent(addcustomer.this,EmployeeProfile.class);
+                        startActivity(in);
+                    }else{
+                        Intent in = new Intent(addcustomer.this,AdminProfile.class);
+                        startActivity(in);
+                    }
                 }
             }
         }, new Response.ErrorListener() {
@@ -72,6 +98,7 @@ public class addcustomer extends AppCompatActivity {
                 params.put("problem", problems);
                 params.put("estimate", estimate);
                 params.put("paid", paid);
+                params.put("enginner_id",enginner_id);
                 return params; // {email: 'shivnag@gmail.com',pass:'124'}
             }
         };

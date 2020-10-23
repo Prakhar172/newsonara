@@ -14,19 +14,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AddEnginner"></activity>
-        <activity android:name=".EmployeeProfile" />
-        <activity android:name=".customerlist"></activity>
-        <activity android:name=".addcustomer"></activity>
-        <activity android:name=".signup" />
-        <activity android:name=".login">
+        <activity android:name=".EmployeeList">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".AddEnginner" />
+        <activity android:name=".EmployeeProfile" />
+        <activity android:name=".customerlist" />
+        <activity android:name=".addcustomer" />
+        <activity android:name=".signup" />
+        <activity android:name=".login" />
+        <activity android:name=".MainActivity">
+        </activity>
         <activity android:name=".AdminProfile" />
     </application>
 
