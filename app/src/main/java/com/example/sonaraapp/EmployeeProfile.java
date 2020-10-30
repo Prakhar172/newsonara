@@ -12,16 +12,25 @@ import com.example.sonaraapp.commonclasses.SharedData;
 
 public class EmployeeProfile extends AppCompatActivity {
 
-    Button btn_add_customer,btn_show_customer,btn_logout;
+    Button btn_add_customer,btn_show_customer,btn_logout,btn_Complaints;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_employee_profile);
         btn_add_customer = findViewById(R.id.btn_add_customer);
         btn_show_customer = findViewById(R.id.btn_show_customer);
+        btn_Complaints = findViewById(R.id.btn_emplyoe_complaint);
         btn_logout = findViewById(R.id.btn_logout);
         SharedData sp = new SharedData(EmployeeProfile.this);
 //        Toast.makeText(this, ""+sp.GetName(), Toast.LENGTH_SHORT).show();
+        btn_Complaints.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(EmployeeProfile.this,Complaints.class);
+                startActivity(in);
+
+            }
+        });
         btn_add_customer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.example.sonaraapp.commonclasses.SharedData;
 
 public class AdminProfile extends AppCompatActivity {
-Button addengineer, addcustomer,showcustomer,logout;
+Button addengineer, addcustomer,logout,showengineer,sold,complaints;
 
 
     @Override
@@ -20,15 +20,31 @@ Button addengineer, addcustomer,showcustomer,logout;
         setContentView(R.layout.activity_adminprofile);
         addcustomer = findViewById(R.id.btn_add_customer);
         addengineer = findViewById(R.id.btn_add_enginner);
-        showcustomer = findViewById(R.id.btn_show_customer);
+        complaints = findViewById(R.id.btn_complaints);
+        sold = findViewById(R.id.btn_sold);
+        showengineer = findViewById(R.id.btn_show_engineer);
         logout = findViewById(R.id.btn_logout);
         SharedData sharedData = new SharedData(AdminProfile.this);
+        sold.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(AdminProfile.this,sold_activity.class);
+                startActivity(in);
+            }
+        });
         if(!sharedData.GetSharedPrefernce()){
             Intent in = new Intent(AdminProfile.this,login.class);
             startActivity(in);
         }
 
+complaints.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent in = new Intent(AdminProfile.this,Complaints.class);
+        startActivity(in);
 
+    }
+});
     addcustomer.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -43,13 +59,6 @@ Button addengineer, addcustomer,showcustomer,logout;
             startActivity(in);
         }
     });
-    showcustomer.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent in = new Intent(AdminProfile.this,customerlist.class);
-            startActivity(in);
-        }
-    });
     logout.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -58,7 +67,13 @@ Button addengineer, addcustomer,showcustomer,logout;
             startActivity(new Intent(AdminProfile.this,login.class));
         }
     });
-
+    showengineer.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent in = new Intent(AdminProfile.this,EmployeeList.class);
+            startActivity(in);
+        }
+    });
     }
     @Override
     public void onBackPressed() {
