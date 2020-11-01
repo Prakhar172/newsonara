@@ -107,15 +107,6 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:text="Old Laptop"/>
-        <RadioButton
-
-            android:background="@drawable/radioselector"
-            android:textColor="@drawable/textcolor"
-            android:elevation="4dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:text="For Repair"/>
 
 
     </RadioGroup>
